@@ -1,0 +1,20 @@
+{
+  "name": "travel-story-planner",
+  "version": "1.0.0",
+  "description": "A travel story planning application",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend/travel-story-app && npm run dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0"
+    
+  }
+}
