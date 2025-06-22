@@ -176,73 +176,76 @@ const AddEditTravelStory = ({
   };
 
   return (
-    <div className="relative">
-      <div className="flex items-center justify-between">
+    <div className="relative w-full max-w-4xl mx-auto px-4 sm:px-6 py-4">
+      {/* Header: Title + Buttons */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <h5 className="text-xl font-medium text-slate-700">
           {type === "add" ? "Add Story" : "Update Story"}
         </h5>
 
-        <div>
-          <div className="flex items-center gap-3 bg-cyan-50/50 p-2 rounded-l-lg">
+        <div className="flex flex-wrap items-center gap-3 bg-cyan-50/50 p-2 rounded-lg">
+          <button className="btn-small" onClick={handleAddOrUpdateClick}>
             {type === "add" ? (
-              <button className="btn-small" onClick={handleAddOrUpdateClick}>
+              <>
                 <MdAdd className="text-lg" /> ADD STORY
-              </button>
+              </>
             ) : (
               <>
-                <button className="btn-small" onClick={handleAddOrUpdateClick}>
-                  <MdUpdate className="text-lg" /> UPDATE STORY
-                </button>
+                <MdUpdate className="text-lg" /> UPDATE STORY
               </>
             )}
-
-            <button className="" onClick={onClose}>
-              <MdClose className="text-xl text-slate-400" />
-            </button>
-          </div>
-          {error && (
-            <p className="text-red-500 text-xs pt-2 text-right">{error}</p>
-          )}
+          </button>
+          <button onClick={onClose}>
+            <MdClose className="text-xl text-slate-400" />
+          </button>
         </div>
       </div>
 
-      <div>
-        <div className="flex-1 flex flex-col gap-2 pt-4">
+      {/* Error Message */}
+      {error && <p className="text-red-500 text-xs pt-2 text-right">{error}</p>}
+
+      {/* Form Fields */}
+      <div className="flex-1 flex flex-col gap-4 pt-6">
+        {/* Title */}
+        <div>
           <label className="input-label">TITLE</label>
           <input
             type="text"
-            className="text-2xl text-slate-950 outline-none"
+            className="text-lg md:text-2xl text-slate-950 outline-none w-full border-b border-slate-200 py-1"
             placeholder="A Day at the Great Wall"
             value={title}
             onChange={({ target }) => setTitle(target.value)}
           />
+        </div>
 
-          <div className="my-3">
-            <DateSelector date={visitedDate} setDate={setVisitedDate} />
-          </div>
+        {/* Date Picker */}
+        <div>
+          <DateSelector date={visitedDate} setDate={setVisitedDate} />
+        </div>
 
-          <ImageSelector
-            image={storyImg}
-            setImage={setStoryImg}
-            handleDeleteImg={handleDeleteStoryImg}
+        {/* Image Upload */}
+        <ImageSelector
+          image={storyImg}
+          setImage={setStoryImg}
+          handleDeleteImg={handleDeleteStoryImg}
+        />
+
+        {/* Story Text Area */}
+        <div className="flex flex-col gap-2">
+          <label className="input-label">STORY</label>
+          <textarea
+            className="text-sm text-slate-950 outline-none bg-slate-50 p-3 rounded w-full resize-none"
+            placeholder="Your Story"
+            rows={8}
+            value={story}
+            onChange={({ target }) => setStory(target.value)}
           />
+        </div>
 
-          <div className="flex flex-col gap-2 mt-4">
-            <label className="input-label">STORY</label>
-            <textarea
-              type="text"
-              className="text-sm text-slate-950 outline-none bg-slate-50 p-2 rounded"
-              placeholder="Your Story"
-              rows={10}
-              value={story}
-              onChange={({ target }) => setStory(target.value)}
-            />
-          </div>
-
-          <div className="pt-3">
-            <label className="input-label">VISITED LOCATIONS</label>
-            <TagInput tags={visitedLocation} setTags={setVisitedLocation} />
-          </div>
+        {/* Tags */}
+        <div className="pt-3">
+          <label className="input-label">VISITED LOCATIONS</label>
+          <TagInput tags={visitedLocation} setTags={setVisitedLocation} />
         </div>
       </div>
     </div>

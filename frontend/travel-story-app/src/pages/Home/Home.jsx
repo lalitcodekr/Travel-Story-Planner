@@ -185,7 +185,8 @@ const Home = () => {
         onSearchNote={onSearchStory}
         handleClearSearch={handleClearSearch}
       />
-      <div className="container mx-auto py-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        {/* Filter Info */}
         <FilterInfoTitle
           filterType={filterType}
           filterDates={dateRange}
@@ -194,26 +195,26 @@ const Home = () => {
           }}
         />
 
-        <div className="flex gap-7">
-          <div className="flex-1">
+        {/* Responsive Layout */}
+        <div className="flex flex-col-reverse lg:flex-row gap-6">
+          {/* Travel Stories Section */}
+          <div className="flex-1 w-full">
             {allStories.length > 0 ? (
-              <div className="grid grid-cols-2 gap-4">
-                {allStories.map((item) => {
-                  return (
-                    <TravelStoryCard
-                      key={item._id}
-                      imgUrl={item.imageUrl}
-                      title={item.title}
-                      story={item.story}
-                      date={item.visitedDate}
-                      visitedLocation={item.visitedLocation}
-                      isFavourite={item.isFavourite}
-                      onEdit={() => handleEdit(item)}
-                      onClick={() => handleViewStory(item)}
-                      onFavouriteClick={() => updateIsFavourite(item)}
-                    />
-                  );
-                })}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
+                {allStories.map((item) => (
+                  <TravelStoryCard
+                    key={item._id}
+                    imgUrl={item.imageUrl}
+                    title={item.title}
+                    story={item.story}
+                    date={item.visitedDate}
+                    visitedLocation={item.visitedLocation}
+                    isFavourite={item.isFavourite}
+                    onEdit={() => handleEdit(item)}
+                    onClick={() => handleViewStory(item)}
+                    onFavouriteClick={() => updateIsFavourite(item)}
+                  />
+                ))}
               </div>
             ) : (
               <EmptyCard
@@ -222,8 +223,10 @@ const Home = () => {
               />
             )}
           </div>
-          <div className="w-[350px]">
-            <div className="bg-white border border-slate-200 shadow-lg shadow-slate-200/60 rounded-lg">
+
+          {/* Calendar Section */}
+          <div className="w-full lg:w-[350px] flex justify-center lg:justify-end">
+            <div className="bg-white border border-slate-200 shadow-lg shadow-slate-200/60 rounded-lg self-start max-h-[400px]">
               <div className="p-3">
                 <DayPicker
                   captionLayout="dropdown-buttons"
