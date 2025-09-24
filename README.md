@@ -42,9 +42,9 @@ The server will run on `localhost:5173`.
 
 Contributions are welcome! Feel free to fork the repository, make changes, and submit a pull request.
 
-## Contact
+## Check my Project here!
 
-For any issues or suggestions, feel free to reach out!
+Feel free to contact and suggest changes ☺️.
 
 [![Connect on LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin\&style=for-the-badge)](https://www.linkedin.com/posts/p-lalit-kr_webdevelopment-mernstack-travelapp-activity-7318311077291692032-ki2U?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEphUCABmksQNkii_jCVDvl08dxfY1S-of0)
 
